@@ -1,7 +1,6 @@
 from kafka import KafkaConsumer
 import json
 
-# Configuração do Kafka
 KAFKA_TOPIC = 'logs_topic'
 KAFKA_SERVER = 'localhost:9092'
 
@@ -29,7 +28,6 @@ def consume_from_kafka():
             print(f"Erro ao processar a mensagem: {e}")
 
 def process_log(log):
-    # Processar o log (exemplo: imprimir no console)
     print(f"Log recebido: {log}")
 
 if __name__ == "__main__":

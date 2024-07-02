@@ -2,7 +2,6 @@ import pandas as pd
 from kafka import KafkaProducer
 import json
 
-# Configuração do Kafka
 KAFKA_TOPIC = 'logs_topic'
 KAFKA_SERVER = 'localhost:9092'
 
@@ -17,7 +16,6 @@ def csv_to_kafka(csv_file):
         print(f"Erro ao criar Kafka Producer: {e}")
         return
 
-    # Ler o arquivo CSV
     try:
         df = pd.read_csv(csv_file)
         print(f"Arquivo {csv_file} lido com sucesso.")
@@ -28,7 +26,6 @@ def csv_to_kafka(csv_file):
         print(f"Erro ao ler o arquivo CSV: {e}")
         return
     
-    # Enviar cada linha do CSV para o Kafka
     for index, row in df.iterrows():
         try:
             producer.send(KAFKA_TOPIC, row.to_dict())
